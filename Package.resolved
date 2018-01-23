@@ -18,6 +18,24 @@
           "revision": "0ff81f2c665b4381f526bd656f8708dd52a9ea2f",
           "version": "1.2.0"
         }
+      },
+      {
+        "package": "Result",
+        "repositoryURL": "https://github.com/antitypical/Result",
+        "state": {
+          "branch": null,
+          "revision": "7477584259bfce2560a19e06ad9f71db441fff11",
+          "version": "3.2.4"
+        }
+      },
+      {
+        "package": "Swish",
+        "repositoryURL": "https://github.com/klaaspieter/Swish.git",
+        "state": {
+          "branch": "kp-spm",
+          "revision": "dbc150e47c2cfe4654c5e3e361fef8171bbbb071",
+          "version": null
+        }
       }
     ]
   },

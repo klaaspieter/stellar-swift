@@ -16,11 +16,12 @@ let package = Package(
   dependencies: [
     .package(url: "https://github.com/Quick/Nimble.git", from: "7.0.3"),
     .package(url: "https://github.com/Quick/Quick.git", from: "1.2.0"),
+    .package(url: "https://github.com/klaaspieter/Swish.git", .branch("kp-spm")),
   ],
   targets: [
     .target(
       name: "stellar-framework",
-      dependencies: []
+      dependencies: ["Swish"]
     ),
     .target(
       name: "stellar-cli",
