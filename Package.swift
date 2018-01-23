@@ -5,11 +5,11 @@ let package = Package(
   name: "stellar-swift",
   products: [
     .library(
-      name: "stellar",
-      targets: ["stellar-framework"]
+      name: "Stellar",
+      targets: ["Stellar"]
     ),
     .executable(
-      name: "stellar",
+      name: "Stellar",
       targets: ["stellar-cli"]
     ),
   ],
@@ -20,16 +20,16 @@ let package = Package(
   ],
   targets: [
     .target(
-      name: "stellar-framework",
+      name: "Stellar",
       dependencies: ["Swish"]
     ),
     .target(
       name: "stellar-cli",
-      dependencies: ["stellar-framework"]
+      dependencies: ["Stellar"]
     ),
     .testTarget(
-      name: "stellar-frameworkTests",
-      dependencies: ["stellar-framework", "Quick", "Nimble"]
+      name: "StellarTests",
+      dependencies: ["Stellar", "Quick", "Nimble"]
     ),
   ]
 )
