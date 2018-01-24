@@ -1,8 +1,15 @@
 import Foundation
 import Nimble
+import Quick
 import Swish
 
-public func hitEndpoint<T: Request>(_ path: String) -> Predicate<T> {
+func itBehavesLike<T: Request>(_ behavior: APIRequestBehavior, request: T) {
+  itBehavesLike(behavior.rawValue) {
+    ["request": request.build()]
+  }
+}
+
+func hitEndpoint<T: Request>(_ path: String) -> Predicate<T> {
   return Predicate.define(matcher: { actualExpression in
     let request = try actualExpression.evaluate()
     let message: ExpectationMessage
