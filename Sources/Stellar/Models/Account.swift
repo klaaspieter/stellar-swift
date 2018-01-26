@@ -1,5 +1,5 @@
 public struct Account: Decodable {
-  let id: String
+  let id: ID<Account>
 }
 
 public func == (lhs: Account, rhs: Account) -> Bool {
