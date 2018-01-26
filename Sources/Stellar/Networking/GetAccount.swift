@@ -13,8 +13,6 @@ public struct GetAccount: Request {
   }
 
   public func build() -> URLRequest {
-    return URLRequest(
-      url: URL(string: "/account/test", relativeTo: network.url)!
-    )
+    return network.request(for: .account(id: id))
   }
 }
