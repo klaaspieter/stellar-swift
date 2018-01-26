@@ -2,7 +2,7 @@ import Foundation
 import Swish
 
 public struct GetAccount: Request {
-  public typealias ResponseObject = Dictionary<String, Any?>
+  public typealias ResponseObject = Account
 
   public let id: String
   public let network: Network
