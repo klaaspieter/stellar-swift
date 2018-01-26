@@ -1,11 +1,14 @@
 import Foundation
 import Nimble
 import Quick
-import Swish
+import Stellar
 
 func itBehavesLike<T: Request>(_ behavior: APIRequestBehavior, request: T) {
   itBehavesLike(behavior.rawValue) {
-    ["request": request.build()]
+    [
+      "request": request.build(),
+      "network": request.network,
+    ]
   }
 }
 

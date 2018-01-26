@@ -4,9 +4,10 @@ import Stellar
 
 class GetAccountSpec: QuickSpec {
   override func spec() {
-    itBehavesLike(.getRequest, request: GetAccount(id: "test))
+    itBehavesLike(.getRequest, request: GetAccount(id: "test", network: .test))
+
     it("requests /accounts/{account id}") {
-      let request = GetAccount(id: "test")
+      let request = GetAccount(id: "test", network: .test)
 
       expect(request).to(hitEndpoint("/accounts/test"))
     }
