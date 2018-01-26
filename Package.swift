@@ -9,7 +9,7 @@ let package = Package(
       targets: ["Stellar"]
     ),
     .executable(
-      name: "Stellar",
+      name: "stellar",
       targets: ["stellar-cli"]
     ),
   ],
