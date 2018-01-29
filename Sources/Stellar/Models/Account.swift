@@ -1,4 +1,4 @@
-public struct Account: Decodable {
+public struct Account: Codable {
   let id: ID<Account>
 }
 

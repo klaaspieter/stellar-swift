@@ -1,4 +1,4 @@
-public struct ID<T>: Decodable, Equatable {
+public struct ID<T>: Codable, Equatable {
   public let value: String
 
   init(value: String) {
@@ -8,6 +8,11 @@ public struct ID<T>: Decodable, Equatable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
     value = try container.decode(String.self)
+  }
+
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.singleValueContainer()
+    try container.encode(value)
   }
 
   public static func == (lhs: ID, rhs: ID) -> Bool {

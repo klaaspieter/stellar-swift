@@ -67,7 +67,15 @@ func parseAccounts(arguments: [String]) {
     exit(message: "Account ID is required", code: 1)
   }
   network.getAccount(id: accountID, completionHandler: { result in
-    print(result)
+    switch result {
+    case .success(let account):
+      let encoder = JSONEncoder()
+      encoder.outputFormatting = .prettyPrinted
+      let data = try! encoder.encode(account)
+      print(String(data: data, encoding: .utf8)!)
+    case .failure(let error):
+      print(error)
+    }
     exit(0)
   })
 
