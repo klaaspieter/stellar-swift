@@ -15,6 +15,11 @@ public struct ID<T>: Decodable, Equatable {
   }
 }
 
+extension ID: CustomStringConvertible {
+  public var description: String {
+    return self.value
+  }
+}
 
 extension ID: ExpressibleByStringLiteral {
   public typealias StringLiteralType = String
