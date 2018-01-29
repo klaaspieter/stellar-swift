@@ -1,6 +1,6 @@
 public struct Balance: Codable {
-  let balance: String
-  let type: String
+  public let balance: String
+  public let type: String
 
   enum CodingKeys: String, CodingKey {
     case balance = "balance"

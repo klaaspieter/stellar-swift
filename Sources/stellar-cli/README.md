@@ -15,6 +15,7 @@ Stellar
 
 Usage:
   stellar accounts <id> [--network=NETWORK]
+  stellar balance <id> [--network=NETWORK]
   stellar -h|--help
 
 Options:

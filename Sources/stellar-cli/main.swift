@@ -82,10 +82,38 @@ func parseAccounts(arguments: [String]) {
   RunLoop.main.run()
 }
 
+func parseBalance(arguments: [String]) {
+  guard let accountID = arguments[safe: 0] else {
+    exit(message: "Account ID is required", code: 1)
+  }
+
+  network.getAccount(id: accountID, completionHandler: { result in
+    let balance = result.map({
+      $0.balances.first(where: { $0.type == "native" })
+    })
+
+    switch balance {
+    case .success(.some(let balance)):
+      print(balance.balance)
+
+    case .success(.none):
+      print("This account has no native (XLM) balance")
+
+    case .failure(let error):
+       print(error)
+    }
+
+    exit(0)
+  })
+
+  RunLoop.main.run()
+}
+
 switch arguments[0] {
 case "accounts":
   parseAccounts(arguments: Array(arguments[safe: 1..<2]))
-
+case "balance":
+  parseBalance(arguments: Array(arguments[safe: 1..<2]))
 default:
   printUsage()
 }
