@@ -1,4 +1,5 @@
 import Foundation
+import Stellar
 
 func printUsage() -> Never {
   exit(
@@ -40,4 +41,43 @@ guard !arguments.contains(
   where: isOption(short: "-v", long: "--version")
 ) else {
   exit(message: "1.0.0", code: 0)
+}
+
+let network: Network
+if let index = arguments.index(of: "--network"),
+  let networkIndex = arguments.index(
+    index,
+    offsetBy: 1,
+    limitedBy: arguments.endIndex
+  )
+{
+
+  if let n = Network(string: arguments[networkIndex]) {
+    network = n
+  } else {
+    print("Invalid network URL. Using test network instead")
+    network = .test
+  }
+} else {
+  network = .test
+}
+
+func parseAccounts(arguments: [String]) {
+  guard let accountID = arguments[safe: 0] else {
+    exit(message: "Account ID is required", code: 1)
+  }
+  network.getAccount(id: accountID, completionHandler: { result in
+    print(result)
+    exit(0)
+  })
+
+  RunLoop.main.run()
+}
+
+switch arguments[0] {
+case "accounts":
+  parseAccounts(arguments: Array(arguments[safe: 1..<2]))
+
+default:
+  printUsage()
 }
