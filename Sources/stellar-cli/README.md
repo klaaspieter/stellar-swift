@@ -8,8 +8,6 @@ TBD
 
 ## Usage
 
-Retrieve an account on the test network:
-
 ```
 Stellar
 
